@@ -184,7 +184,7 @@
                             <span class="text-danger text-small text-italic">Optional</span>
                         </td>
                         <td><em>number [Int]</em></td>
-                        <td><code>60</code></td>
+                        <td><code>30</code></td>
                         <td>Frames per second of progress and vanish animations.</td>
                     </tr>
                     <tr>
@@ -201,9 +201,14 @@
                         </td>
                         <td>
                             You can define your own notification types or override existing ones. For example:
-<pre><code class="language-js">"custom": {
-    "classes": "alert-custom"
-}</code></pre>
+<pre><code class="language-js">"friendly": {
+    "classes": "alert-friendly",
+    "icon": "&lt;svg&gt;...&lt;/svg&gt;"
+},
+"hostile": {
+    "classes": "myhostileclass mb-3",
+    "icon": "&lt;i class\"icon icon-angry\"&gt;&lt;i&gt;"
+} </code></pre>
 
                         </td>
                     </tr>
