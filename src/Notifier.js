@@ -11,7 +11,7 @@
 var Notifier = (function() {
     var defaults = {
         container: null,
-        default_time: 3500,
+        default_time: 4500,
         vanish_time: 300,
         fps: 30,
         success: {
@@ -37,6 +37,8 @@ var Notifier = (function() {
     };
 
     var Notification = function(container, msg, type, time, vanish, fps, callback) {
+        this.pushed = false;
+
         // Notification
         this.element = document.createElement('div');
         this.element.className = 'notifyjs-notification ' + type.classes;
@@ -54,10 +56,14 @@ var Notifier = (function() {
         var self = this;
 
         this.push = function() {
+            if (self.pushed) return;
+            self.pushed = true;
+
             var i = 0,
                 lapse = 1000 / fps;
 
-            this.interval = setInterval(function() {
+            self.element.style.display = "block";
+            self.interval = setInterval(function() {
                 i++;
                 var percent = (1 - lapse * i / time) * 100;
 
@@ -67,18 +73,22 @@ var Notifier = (function() {
                     if (typeof callback === 'function') {
                         callback();
                     }
-                    clearInterval(self.interval);
                     self.clear();
                 }
             }, lapse);
         };
 
         this.clear = function() {
+            if (!self.pushed) return;
+
             var lapse = 1000 / fps,
                 cut = 1 / (vanish / lapse),
                 opacity = 1;
 
-            this.interval = setInterval(function() {
+            if (typeof self.interval !== 'undefined') {
+                clearInterval(self.interval);
+            }
+            self.interval = setInterval(function() {
                 opacity -= cut;
                 self.element.style.opacity = opacity;
 
@@ -90,13 +100,14 @@ var Notifier = (function() {
         };
 
         this.destroy = function() {
-            container.removeChild(this.element);
-            if (typeof this.interval !== 'undefined') {
-                clearInterval(this.interval);
-            }
-        };
+            if (!self.pushed) return;
+            self.pushed = false;
 
-        return this;
+            if (typeof self.interval !== 'undefined') {
+                clearInterval(self.interval);
+            }
+            container.removeChild(self.element);
+        };
     };
 
     var Notifier = function(opts) {

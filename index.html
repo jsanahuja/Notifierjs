@@ -59,6 +59,23 @@
             flex-grow: 1;
         }
 
+        .nav-tabs {
+            border: 0;
+        }
+
+        .nav-tabs li {
+            margin: 0 0.25em;
+        }
+
+        .nav-tabs li .nav-link {
+            margin: 0 0.25em;
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        .nav-tabs li .nav-link.active {
+            background: #FFF;
+        }
+
         #btn-top {
             position: fixed;
             z-index: 50;
@@ -70,8 +87,46 @@
             opacity: .66;
             display: none;
         }
-        .table-striped tbody tr:nth-of-type(odd) td pre{
-            background:#FFF;
+
+        .table-striped tbody tr:nth-of-type(odd) td pre {
+            background: #FFF;
+        }
+
+        .btn-github {
+            color: #24292e;
+            background-color: #fafbfc;
+            border: 1px #c4c8cc solid;
+            margin: 0 0.25em;
+        }
+
+        .btn-github:hover {
+            background-color: #e6ebf1;
+            background-image: linear-gradient(-180deg, #f0f3f6, #e6ebf1 90%);
+            background-position: -.5em;
+            border-color: rgba(27, 31, 35, .35);
+        }
+
+        .btn-github svg {
+            vertical-align: middle;
+            width:14px;
+            height:14px;
+            margin-bottom: 2px;
+            fill: #24292e;
+        }
+
+        /* Example 4*/
+        .notifyjs-container .notifyjs-notification.alert-dark {
+            color: #24292e;
+            background-color: #fafbfc;
+            border-color: #c4c8cc;
+        }
+
+        .notifyjs-container .notifyjs-notification.alert-dark p.progress {
+            background: #24292e;
+        }
+
+        .notifyjs-container .notifyjs-notification.alert-dark .notifyjs-icon svg {
+            fill: #24292e;
         }
     </style>
 </head>
@@ -82,12 +137,14 @@
         <div class="container py-4">
             <div class="row">
                 <div class="col-xs-12 col-md-8">
-                    <h1 class="text-white m-0"> Documentation Notifier.js </h1>
+                    <h1 class="text-white m-0">Notifier.js </h1>
                     <p class="text-white m-0">Vanilla Javascript html notifications manager
                     </p>
                     <ul class="list-inline menu-navigation pt-3">
-                        <li class="list-inline-item"><a class="text-white text-underline" href="#options">Options</a></li>
-                        <li class="list-inline-item"><a class="text-white text-underline" href="#examples">Examples</a></li>
+                        <li class="list-inline-item"><a class="text-white text-underline" href="#docs">Documentation</a>
+                        </li>
+                        <li class="list-inline-item"><a class="text-white text-underline" href="#examples">Examples</a>
+                        </li>
                     </ul>
                 </div>
                 <div class="col-xs-12 col-md-4">
@@ -123,15 +180,51 @@
         </div>
     </header>
 
-    <section id="options">
+    <section id="docs">
         <div class="bg-secondary-2 py-3">
             <div class="container">
-                <h3>Options</h3>
+                <h2>Documentation</h2>
             </div>
         </div>
 
         <div class="container py-3">
+            <h3 id="notifier" class="mt-3"><a class="text-underline" href="#notifier">Notifier</a></h3>
+            <table class="table table-striped">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Method</th>
+                        <th>Type</th>
+                        <th style="width: 40%">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="d-flex flex-wrap">
+                            <code
+                                class="text-bold flex-grow-1"><em>constructor(<a class="text-underline" href="#options">options</a>)</em></code>
+                        </td>
+                        <td></td>
+                        <td>Instances the notifications manager with the given <em>options</em>.</td>
+                    </tr>
+                    <tr>
+                        <td class="d-flex flex-wrap">
+                            <code class="text-bold flex-grow-1">notify(type, msg, time, callback)</code>
+                        </td>
+                        <td><em><a class="text-underline" href="#notification">Notification</a></em></td>
+                        <td>
+                            Creates a new <em>Notification</em> object of the type <code><em>type</em></code> with the
+                            message <code><em>msg</em></code>.
+                            The notification will be shown (on <a class="text-underline"
+                                href="#notification.push">push</a>) for <code><em>time</em></code> miliseconds or
+                            <code><em>default_time</em></code> if not specified.
+                            The <code><em>callback</em></code> will be called right before the gracefully vanish (on <a
+                                class="text-underline" href="#notification.clear">clear</a>).
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
 
+            <h4 id="options" class="mt-4"><a class="text-underline" href="#options">Notifier Options</a></h4>
             <table class="table table-striped">
                 <thead class="thead-light">
                     <tr>
@@ -149,7 +242,7 @@
                         </td>
                         <td><em>Element</em></td>
                         <td><code>null</code></td>
-                        <td>Notifications wrapper. Will be created if not specified</td>
+                        <td>Notifications wrapper. Will be created if not specified.</td>
                     </tr>
                     <tr>
                         <td class="d-flex flex-wrap">
@@ -157,17 +250,8 @@
                             <span class="text-danger text-small text-italic">Optional</span>
                         </td>
                         <td><em>number [Int]</em></td>
-                        <td><code>3500</code></td>
+                        <td><code>4500</code></td>
                         <td>Number of miliseconds the notification will be visible if not specified.</td>
-                    </tr>
-                    <tr>
-                        <td class="d-flex flex-wrap">
-                            <code class="text-bold flex-grow-1">vanish_time</code>
-                            <span class="text-danger text-small text-italic">Optional</span>
-                        </td>
-                        <td><em>number [Int]</em></td>
-                        <td><code>300</code></td>
-                        <td>Miliseconds the notification vanish animation will take.</td>
                     </tr>
                     <tr>
                         <td class="d-flex flex-wrap">
@@ -189,19 +273,19 @@
                     </tr>
                     <tr>
                         <td class="d-flex flex-wrap">
-                            <code class="text-bold flex-grow-1"><em>*</em></code>
+                            <code class="text-bold flex-grow-1"><em>&lt;type&gt;</em></code>
                             <span class="text-danger text-small text-italic">Optional</span>
                         </td>
                         <td><em>Object</em></td>
                         <td>
-                            <span class="text-danger text-small text-italic">success</span>, 
-                            <span class="text-danger text-small text-italic">error</span>, 
-                            <span class="text-danger text-small text-italic">warning</span>, 
+                            <span class="text-danger text-small text-italic">success</span>,
+                            <span class="text-danger text-small text-italic">error</span>,
+                            <span class="text-danger text-small text-italic">warning</span>,
                             <span class="text-danger text-small text-italic">info</span>
                         </td>
                         <td>
                             You can define your own notification types or override existing ones. For example:
-<pre><code class="language-js">"friendly": {
+                            <pre><code class="language-js">"friendly": {
     "classes": "alert-friendly",
     "icon": "&lt;svg&gt;...&lt;/svg&gt;"
 },
@@ -214,16 +298,63 @@
                     </tr>
                 </tbody>
             </table>
+
+            <h3 id="notification" class="mt-4"><a class="text-underline" href="#notification">Notification</a></h3>
+            <table class="table table-striped">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Method</th>
+                        <th colspan="2">Type</th>
+                        <th style="width: 40%">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr id="notification.push">
+                        <td class="d-flex flex-wrap">
+                            <code class="text-bold flex-grow-1"><em>push()</em></code>
+                        </td>
+                        <td colspan="2">void</td>
+                        <td>Displays the notification.</td>
+                    </tr>
+                    <tr id="notification.clear">
+                        <td class="d-flex flex-wrap">
+                            <code class="text-bold flex-grow-1"><em>clear()</em></code>
+                        </td>
+                        <td colspan="2">void</td>
+                        <td>Vanishes the notification gracefully.</td>
+                    </tr>
+                    <tr id="notification.destroy">
+                        <td class="d-flex flex-wrap">
+                            <code class="text-bold flex-grow-1"><em>destroy()</em></code>
+                        </td>
+                        <td colspan="2">void</td>
+                        <td>Destroys the notification. Note it <strong>will not</strong> trigger the
+                            <code><em>callback</em></code>.</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </section>
     <section id="examples">
-        <div class="bg-secondary-2 py-3">
+        <div class="bg-secondary-2 pt-3">
             <div class="container">
-                <h3>Examples</h3>
+                <h2>Examples</h2>
                 <ul class="pt-3 nav nav-tabs" id="tabExamples" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" id="example1-tab" href="#example1" role="tab"
                             aria-controls="Example 1" aria-selected="true" data-toggle="tab">Example 1</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="example2-tab" href="#example2" role="tab" aria-controls="Example 2"
+                            aria-selected="true" data-toggle="tab">Example 2</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="example3-tab" href="#example3" role="tab" aria-controls="Example 3"
+                            aria-selected="true" data-toggle="tab">Example 3</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="example4-tab" href="#example4" role="tab" aria-controls="Example 4"
+                            aria-selected="true" data-toggle="tab">Example 4</a>
                     </li>
                 </ul>
             </div>
@@ -232,13 +363,60 @@
             <div class="tab-content" id="tabContentExamples">
 
                 <div class="tab-pane fade show active" id="example1" role="tabpanel" aria-labelledby="example1-tab">
-                    <h3>Example 1: Push notification</h3>
-                    <p>Don't like it? Check other examples!</p>
+                    <h3>Example 1: Push notifications</h3>
+                    <p><code><em>push</em></code> your notification using the <code><em>type</em></code> according to
+                        the message.</p>
 
                     <button class="btn btn-success" id="ex1notify1">Success Notification</button>
-                    <button class="btn btn-info"    id="ex1notify2">Info Notification</button>
+                    <button class="btn btn-info" id="ex1notify2">Info Notification</button>
                     <button class="btn btn-warning" id="ex1notify3">Warning Notification</button>
-                    <button class="btn btn-danger"  id="ex1notify4">Error Notification</button>
+                    <button class="btn btn-danger" id="ex1notify4">Error Notification</button>
+
+                    <div class="section_code py-3">
+                        <div>Code:</div>
+                        <pre><code class="language-html">&lt;script src="dist/Notifier.min.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+    (function () {
+        var notifier = new Notifier();
+
+        // Success 
+        document.getElementById("ex1notify1").onclick = function () {
+            var notification = notifier.notify("success", "Successfully logged in!");
+            notification.push();
+        };
+
+        // Info 
+        document.getElementById("ex1notify2").onclick = function () {
+            var notification = notifier.notify("info", "New message from &lt;a href=\"https://github.com/jsanahuja/\" target=\"_new\"&gt;jsanahuja&lt;/a&gt; received!");
+            notification.push();
+        };
+
+        // Warning
+        document.getElementById("ex1notify3").onclick = function () {
+            var notification = notifier.notify("warning", "Flood is not permitted, your chat will be temporary disabled");
+            notification.push();
+        };
+
+        // Error
+        document.getElementById("ex1notify4").onclick = function () {
+            var notification = notifier.notify("error", "Invalid username or password");
+            notification.push();
+        };
+
+    })();
+&lt;/script&gt;
+ </code></pre>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade show" id="example2" role="tabpanel" aria-labelledby="example2-tab">
+                    <h3>Example 2: Push, Clear and Destroy notifications</h3>
+                    <p><code><em>push</em></code> your notification and <code><em>clear</em></code> or
+                        <code><em>destroy</em></code> them prematurely.</p>
+
+                    <button class="btn btn-primary" id="ex2notify1">Push 10 Notifications</button>
+                    <button class="btn btn-secondary" id="ex2notify2">Clear all notifications</button>
+                    <button class="btn btn-danger" id="ex2notify3">Destroy all notifications</button>
 
                     <div class="section_code py-3">
                         <div>Code:</div>
@@ -247,23 +425,157 @@
     (function(){
         var notifier = new Notifier();
 
-        document.getElementById("ex1notify1").onclick = function(){
-            var notification = notifier.notify("success", "Success notification");
-            notification.push();
+        var notifications = [];
+
+        // Push 10 notifications
+        document.getElementById("ex2notify1").onclick = function () {
+            for(var i = 0; i &lt; 10; i++){
+                var notification = notifier.notify("info", "Notification "+ i);
+                notification.push();
+                notifications.push(notification);
+            }
         };
 
-        document.getElementById("ex1notify2").onclick = function(){
-            var notification = notifier.notify("info", "Info notification");
-            notification.push();
+        // Clear all notifications
+        document.getElementById("ex2notify2").onclick = function () {
+            for(var i = 0; i &lt; notifications.length; i++){
+                notifications[i].clear();
+            }
+            notifications = [];
         };
 
-        document.getElementById("ex1notify3").onclick = function(){
-            var notification = notifier.notify("warning", "Warning notification");
-            notification.push();
+        // Destroy all notifications
+        document.getElementById("ex2notify3").onclick = function () {
+            for(var i = 0; i &lt; notifications.length; i++){
+                notifications[i].destroy();
+            }
+            notifications = [];
+        };
+    })();
+&lt;/script&gt;
+ </code></pre>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade show" id="example3" role="tabpanel" aria-labelledby="example3-tab">
+                    <h3>Example 3: Using the callback</h3>
+                    <p>Set a <code><em>callback</em></code> to trigger actions after the notification.</p>
+
+                    <button class="btn btn-primary" id="ex3notify1">Start loop</button>
+                    <button class="btn btn-secondary" id="ex3notify2">Stop loop</button>
+
+                    <div class="section_code py-3">
+                        <div>Code:</div>
+                        <pre><code class="language-html">&lt;script src="dist/Notifier.min.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+    (function(){
+        var notifier = new Notifier();
+
+        var notification = null,
+            counter = 0;
+
+        // Start loop
+        document.getElementById("ex3notify1").onclick = function () {
+            if (notification !== null) {
+                return;
+            }
+            var callback = function () {
+                counter++;
+                notification = notifier.notify("info", "This is the notification #" + counter, 3500, callback);
+                notification.push();
+            }
+            callback();
         };
 
-        document.getElementById("ex1notify4").onclick = function(){
-            var notification = notifier.notify("error", "Error notification");
+        // Destroy notification. Clearing it would call the callback!
+        document.getElementById("ex3notify2").onclick = function () {
+            if (notification === null) {
+                return;
+            }
+            notification.destroy();
+            notification = null;
+        };
+    })();
+&lt;/script&gt;
+ </code></pre>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade show" id="example4" role="tabpanel" aria-labelledby="example4-tab">
+                    <h3>Example 4: Define your own styles</h3>
+                    <p>Use the <code><em>&lt;type&gt;</em></code> option to define your own styles</p>
+
+                    <button class="btn btn-github" id="ex4notify1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8">
+                            <path
+                                d="M4.03 0c-2.53 0-4.03 3-4.03 3s1.5 3 4.03 3c2.47 0 3.97-3 3.97-3s-1.5-3-3.97-3zm-.03 1c1.11 0 2 .9 2 2 0 1.11-.89 2-2 2-1.1 0-2-.89-2-2 0-1.1.9-2 2-2zm0 1c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1c0-.1-.04-.19-.06-.28-.08.16-.24.28-.44.28-.28 0-.5-.22-.5-.5 0-.2.12-.36.28-.44-.09-.03-.18-.06-.28-.06z"
+                                transform="translate(0 1)" /></svg>
+                        Watch
+                    </button>
+                    <button class="btn btn-github" id="ex4notify2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8">
+                            <path d="M4 0l-1 3h-3l2.5 2-1 3 2.5-2 2.5 2-1-3 2.5-2h-3l-1-3z" /></svg>
+                        Star
+                    </button>
+                    <button class="btn btn-github" id="ex4notify3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8">
+                            <path
+                                d="M4.03 0c-2.53 0-4.03 3-4.03 3s1.5 3 4.03 3c2.47 0 3.97-3 3.97-3s-1.5-3-3.97-3zm-.03 1c1.11 0 2 .9 2 2 0 1.11-.89 2-2 2-1.1 0-2-.89-2-2 0-1.1.9-2 2-2zm0 1c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1c0-.1-.04-.19-.06-.28-.08.16-.24.28-.44.28-.28 0-.5-.22-.5-.5 0-.2.12-.36.28-.44-.09-.03-.18-.06-.28-.06z"
+                                transform="translate(0 1)" /></svg>
+                        Fork
+                    </button>
+
+                    <p class="mt-3">All the icons, including the ones of this example, used by <a href="https://github.com/jsanahuja/Notifier.js" target="_new">Notifier.js</a> were taken from <a href="https://github.com/iconic/open-iconic">open-iconic</a></p>
+
+                    <div class="section_code py-3">
+                        <div>Code:</div>
+                        <pre><code class="language-html">&lt;!-- 
+-    Our github like custom styles.
+-    Note the style tag should be inside the head tag 
+--&gt;
+&lt;style&gt;
+    .notifyjs-container .notifyjs-notification.alert-github {
+        color: #24292e;
+        background-color: #fafbfc;
+        border-color: #c4c8cc;
+    }
+
+    .notifyjs-container .notifyjs-notification.alert-github p.progress {
+        background: #24292e;
+    }
+
+    .notifyjs-container .notifyjs-notification.alert-github .notifyjs-icon svg {
+        fill: #24292e;
+    }
+&lt;/style&gt;</code></pre>
+                        <pre><code class="language-html">&lt;script src="dist/Notifier.min.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+    (function(){
+        var notifier = new Notifier({
+            "watch": {
+                "classes": "alert-dark",
+                "icon": "&lt;svg xmlns=\"http://www.w3.org/2000/svg\" width=\"8\" height=\"8\" viewBox=\"0 0 8 8\">&lt;path d=\"M4.03 0c-2.53 0-4.03 3-4.03 3s1.5 3 4.03 3c2.47 0 3.97-3 3.97-3s-1.5-3-3.97-3zm-.03 1c1.11 0 2 .9 2 2 0 1.11-.89 2-2 2-1.1 0-2-.89-2-2 0-1.1.9-2 2-2zm0 1c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1c0-.1-.04-.19-.06-.28-.08.16-.24.28-.44.28-.28 0-.5-.22-.5-.5 0-.2.12-.36.28-.44-.09-.03-.18-.06-.28-.06z\" transform=\"translate(0 1)\" /&gt;&lt;/svg&gt;"
+            },
+            "star": {
+                "classes": "alert-dark",
+                "icon": "&lt;svg xmlns=\"http://www.w3.org/2000/svg\" width=\"8\" height=\"8\" viewBox=\"0 0 8 8\"&gt;&lt;path d=\"M4 0l-1 3h-3l2.5 2-1 3 2.5-2 2.5 2-1-3 2.5-2h-3l-1-3z\" /&gt;&lt;/svg&gt;"
+            },
+            "fork": {
+                "classes": "alert-dark",
+                "icon": "&lt;svg xmlns=\"http://www.w3.org/2000/svg\" width=\"8\" height=\"8\" viewBox=\"0 0 8 8\"&gt;&lt;path d=\"M1.5 0c-.83 0-1.5.67-1.5 1.5 0 .66.41 1.2 1 1.41v2.19c-.59.2-1 .75-1 1.41 0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5c0-.6-.34-1.1-.84-1.34.09-.09.21-.16.34-.16h2c.82 0 1.5-.68 1.5-1.5v-.59c.59-.2 1-.75 1-1.41 0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5c0 .66.41 1.2 1 1.41v.59c0 .28-.22.5-.5.5h-2c-.17 0-.35.04-.5.09v-1.19c.59-.2 1-.75 1-1.41 0-.83-.67-1.5-1.5-1.5z\" /&gt;&lt;/svg&gt;"
+            }
+        });
+
+        document.getElementById("ex4notify1").onclick = function () {
+            notification = notifier.notify("watch", "Watched!");
+            notification.push();
+        };
+        document.getElementById("ex4notify2").onclick = function () {
+            notification = notifier.notify("star", "Starred!");
+            notification.push();
+        };
+        document.getElementById("ex4notify3").onclick = function () {
+            notification = notifier.notify("fork", "Forked!");
             notification.push();
         };
     })();
@@ -281,7 +593,7 @@
             <h3 class="text-white">Still not enough?</h3>
 
             <a class="h3 mb-3 text-primary text-underline" target="_blank" rel="noopener"
-                href="https://github.com/jsanahuja/InstagramFeed">
+                href="https://github.com/jsanahuja/Notifier.js">
                 Open an issue or send a pull request!
             </a>
 
@@ -293,33 +605,117 @@
 
     <script src="dist/Notifier.min.js"></script>
     <script>
+        // Example 1
         (function () {
             var notifier = new Notifier();
 
-            // Example 1
-            document.getElementById("ex1notify1").onclick = function(){
-                var notification = notifier.notify("success", "Success notification");
+            document.getElementById("ex1notify1").onclick = function () {
+                var notification = notifier.notify("success", "Successfully logged in!");
                 notification.push();
             };
 
-            document.getElementById("ex1notify2").onclick = function(){
-                var notification = notifier.notify("info", "Info notification");
+            document.getElementById("ex1notify2").onclick = function () {
+                var notification = notifier.notify("info", "New message from <a href=\"https://github.com/jsanahuja/\" target=\"_new\">jsanahuja</a> received!");
                 notification.push();
             };
 
-            document.getElementById("ex1notify3").onclick = function(){
-                var notification = notifier.notify("warning", "Warning notification");
+            document.getElementById("ex1notify3").onclick = function () {
+                var notification = notifier.notify("warning", "Flood is not permitted, your chat will be temporary disabled");
                 notification.push();
             };
 
-            document.getElementById("ex1notify4").onclick = function(){
-                var notification = notifier.notify("error", "Error notification");
+            document.getElementById("ex1notify4").onclick = function () {
+                var notification = notifier.notify("error", "Invalid username or password");
                 notification.push();
             };
-
         })();
+
+        // Example 2
+        (function () {
+            var notifier = new Notifier();
+
+            var notifications = [];
+            document.getElementById("ex2notify1").onclick = function () {
+                for (var i = 0; i < 10; i++) {
+                    var notification = notifier.notify("info", "Notification " + i);
+                    notification.push();
+                    notifications.push(notification);
+                }
+            };
+
+            document.getElementById("ex2notify2").onclick = function () {
+                for (var i = 0; i < notifications.length; i++) {
+                    notifications[i].clear();
+                }
+                notifications = [];
+            };
+
+            document.getElementById("ex2notify3").onclick = function () {
+                for (var i = 0; i < notifications.length; i++) {
+                    notifications[i].destroy();
+                }
+                notifications = [];
+            };
+        })();
+
+        //Example 3
+        (function () {
+            var notifier = new Notifier();
+
+            var notification = null,
+                counter = 0;
+            document.getElementById("ex3notify1").onclick = function () {
+                if (notification !== null) {
+                    return;
+                }
+                var callback = function () {
+                    counter++;
+                    notification = notifier.notify("info", "This is the notification #" + counter, 3500, callback);
+                    notification.push();
+                }
+                callback();
+            };
+            document.getElementById("ex3notify2").onclick = function () {
+                if (notification === null) {
+                    return;
+                }
+                notification.destroy();
+                notification = null;
+            };
+        })();
+
+        // Example 4
+        (function () {
+            var notifier = new Notifier({
+                "watch": {
+                    "classes": "alert-dark",
+                    "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"8\" height=\"8\" viewBox=\"0 0 8 8\"><path d=\"M4.03 0c-2.53 0-4.03 3-4.03 3s1.5 3 4.03 3c2.47 0 3.97-3 3.97-3s-1.5-3-3.97-3zm-.03 1c1.11 0 2 .9 2 2 0 1.11-.89 2-2 2-1.1 0-2-.89-2-2 0-1.1.9-2 2-2zm0 1c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1c0-.1-.04-.19-.06-.28-.08.16-.24.28-.44.28-.28 0-.5-.22-.5-.5 0-.2.12-.36.28-.44-.09-.03-.18-.06-.28-.06z\" transform=\"translate(0 1)\" /></svg>"
+                },
+                "star": {
+                    "classes": "alert-dark",
+                    "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"8\" height=\"8\" viewBox=\"0 0 8 8\"><path d=\"M4 0l-1 3h-3l2.5 2-1 3 2.5-2 2.5 2-1-3 2.5-2h-3l-1-3z\" /></svg>"
+                },
+                "fork": {
+                    "classes": "alert-dark",
+                    "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"8\" height=\"8\" viewBox=\"0 0 8 8\"><path d=\"M1.5 0c-.83 0-1.5.67-1.5 1.5 0 .66.41 1.2 1 1.41v2.19c-.59.2-1 .75-1 1.41 0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5c0-.6-.34-1.1-.84-1.34.09-.09.21-.16.34-.16h2c.82 0 1.5-.68 1.5-1.5v-.59c.59-.2 1-.75 1-1.41 0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5c0 .66.41 1.2 1 1.41v.59c0 .28-.22.5-.5.5h-2c-.17 0-.35.04-.5.09v-1.19c.59-.2 1-.75 1-1.41 0-.83-.67-1.5-1.5-1.5z\" /></svg>"
+                }
+            });
+
+            document.getElementById("ex4notify1").onclick = function () {
+                notification = notifier.notify("watch", "Watched!");
+                notification.push();
+            };
+            document.getElementById("ex4notify2").onclick = function () {
+                notification = notifier.notify("star", "Starred!");
+                notification.push();
+            };
+            document.getElementById("ex4notify3").onclick = function () {
+                notification = notifier.notify("fork", "Forked!");
+                notification.push();
+            };
+        })();
+
         (function ($) {
-            // Show back to top button if distance from top > 0
             $(window).scroll(function () {
                 var viewportTop = $(window).scrollTop() + $(window).height();
 

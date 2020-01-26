@@ -7,6 +7,7 @@
     width: 100%;
 }
 .notifyjs-container .notifyjs-notification {
+    display: none;
     position: relative;
     padding: 1em 2em 1em 2.5em;
     margin-bottom: 0.5em;
@@ -72,7 +73,7 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    left: 1em;
+    left: 10px;
 }
 .notifyjs-container .notifyjs-notification .notifyjs-icon svg,
 .notifyjs-container .notifyjs-notification .notifyjs-icon img {
