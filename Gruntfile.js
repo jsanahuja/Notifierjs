@@ -3,6 +3,8 @@ module.exports = function(grunt) {
         babel: {
             options: {
                 sourceMap: false,
+                comments: false,
+                sourceType: "unambiguous",
                 presets: ['@babel/preset-env', 'minify']
             },
             dist: {
@@ -26,5 +28,5 @@ module.exports = function(grunt) {
 
     grunt.loadNpmTasks('grunt-babel');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
-    grunt.registerTask('dist', ['babel', 'cssmin']);
+    grunt.registerTask('build', ['babel', 'cssmin']);
 };
