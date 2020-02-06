@@ -1,3 +1,14 @@
+/*
+ * Nofifier
+ *
+ * @version 1.1.0
+ *
+ * @author Javier Sanahuja Liebana <bannss1@gmail.com>
+ *
+ * https://github.com/jsanahuja/Notifier.js
+ *
+ */
+
 .notifyjs-container {
     z-index: 100;
     position: fixed;
@@ -6,6 +17,7 @@
     max-width: 304px;
     width: 100%;
 }
+
 .notifyjs-container .notifyjs-notification {
     display: none;
     position: relative;
@@ -16,6 +28,7 @@
     border-style: solid;
     box-sizing: border-box;
 }
+
 .notifyjs-container .notifyjs-notification p.progress {
     position: absolute;
     bottom: 0;
@@ -25,56 +38,70 @@
     content: ' ';
     margin-bottom: 0;
 }
+
 .notifyjs-container .notifyjs-notification.alert-success {
     color: #155724;
     background-color: #d4edda;
     border-color: #c3e6cb;
 }
+
 .notifyjs-container .notifyjs-notification.alert-danger {
     color: #721c24;
     background-color: #f8d7da;
     border-color: #f5c6cb;
 }
+
 .notifyjs-container .notifyjs-notification.alert-warning {
     color: #856404;
     background-color: #fff3cd;
     border-color: #ffeeba;
 }
+
 .notifyjs-container .notifyjs-notification.alert-info {
     color: #0c5460;
     background-color: #d1ecf1;
     border-color: #bee5eb;
 }
+
 .notifyjs-container .notifyjs-notification.alert-success p.progress {
     background: #155724;
 }
-.notifyjs-container .notifyjs-notification.alert-danger  p.progress {
+
+.notifyjs-container .notifyjs-notification.alert-danger p.progress {
     background: #721c24;
 }
+
 .notifyjs-container .notifyjs-notification.alert-warning p.progress {
     background: #856404;
 }
-.notifyjs-container .notifyjs-notification.alert-info    p.progress {
+
+.notifyjs-container .notifyjs-notification.alert-info p.progress {
     background: #0c5460;
 }
+
 .notifyjs-container .notifyjs-notification.alert-success .notifyjs-icon svg {
     fill: #155724;
 }
-.notifyjs-container .notifyjs-notification.alert-danger  .notifyjs-icon svg {
+
+.notifyjs-container .notifyjs-notification.alert-danger .notifyjs-icon svg {
     fill: #721c24;
 }
+
 .notifyjs-container .notifyjs-notification.alert-warning .notifyjs-icon svg {
     fill: #856404;
 }
-.notifyjs-container .notifyjs-notification.alert-info    .notifyjs-icon svg {
+
+.notifyjs-container .notifyjs-notification.alert-info .notifyjs-icon svg {
     fill: #0c5460;
 }
+
 .notifyjs-container .notifyjs-notification .notifyjs-icon {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     left: 10px;
 }
+
 .notifyjs-container .notifyjs-notification .notifyjs-icon svg,
 .notifyjs-container .notifyjs-notification .notifyjs-icon img {
     width: 16px;
