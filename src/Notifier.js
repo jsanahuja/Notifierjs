@@ -1,11 +1,11 @@
 /*
  * Nofifier
  *
- * @version 1.1.2
+ * @version 1.1.4
  *
  * @author Javier Sanahuja Liebana <bannss1@gmail.com>
  *
- * https://github.com/jsanahuja/Notifier.js
+ * https://github.com/jsanahuja/Notifierjs
  *
  */
 (function(root, factory) {
@@ -14,7 +14,7 @@
     } else if (typeof exports === "object") {
         module.exports = factory();
     } else {
-        root.InstagramFeed = factory();
+        root.Notifier = factory();
     }
 }(this, function() {
     var defaults = {
