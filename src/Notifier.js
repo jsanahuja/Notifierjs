@@ -5,7 +5,7 @@
  *
  * @author Javier Sanahuja Liebana <bannss1@gmail.com>
  *
- * https://github.com/jsanahuja/Notifier.js
+ * https://github.com/jsanahuja/Notifierjs
  *
  */
 (function(root, factory) {
