@@ -2,7 +2,7 @@
     "name": "@jsanahuja/notifierjs",
     "description": "Instagram Feed without access token. Not using the Instagram API",
     "homepage": "https://github.com/jsanahuja/Notifierjs",
-    "version": "1.1.4",
+    "version": "1.2.0",
     "keywords": [
         "notifier",
         "notification",
@@ -31,8 +31,7 @@
         "@babel/preset-env": "^7.8.3",
         "babel-preset-minify": "^0.5.1",
         "grunt": "^1.0.4",
-        "grunt-babel": "^8.0.0",
-        "grunt-contrib-cssmin": "^3.0.0"
+        "grunt-babel": "^8.0.0"
     },
     "main": "dist/Notifier.min.js",
     "module": "dist/Notifier.min.js"
