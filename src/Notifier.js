@@ -1,7 +1,7 @@
 /*
  * Nofifier
  *
- * @version 1.2.1
+ * @version 1.2.2
  *
  * @author Javier Sanahuja Liebana <bannss1@gmail.com>
  *
@@ -19,6 +19,7 @@
 }(this, function() {
     var defaults = {
         autopush: true,
+        zindex: 9999,
         default_time: 4500,
         vanish_time: 300,
         fps: 30,
@@ -213,7 +214,7 @@
         if(this.container === null){
             this.container = document.createElement('div');
             this.container.id = "notifyjs-container-" + this.options.position;
-            this.container.style.zIndex = 100;
+            this.container.style.zIndex = this.options.zindex;
             this.container.style.position = "fixed";
             this.container.style.maxWidth = "304px";
             this.container.style.width = "100%";
