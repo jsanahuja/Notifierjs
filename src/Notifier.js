@@ -1,7 +1,7 @@
 /*
  * Nofifier
  *
- * @version 1.2.2
+ * @version 1.2.3
  *
  * @author Javier Sanahuja Liebana <bannss1@gmail.com>
  *
