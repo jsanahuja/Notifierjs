@@ -72,7 +72,7 @@
 
         // Notification
         this.element = document.createElement('div');
-        this.element.className = type.className || "";
+        this.element.className = type.classes || "";
         this.element.style.display = "none";
         this.element.style.position = "relative";
         this.element.style.padding = "1em 2em 1em 2.5em";
