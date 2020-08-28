@@ -1,13 +1,3 @@
-/*
- * Nofifier
- *
- * @version 1.2.3
- *
- * @author Javier Sanahuja Liebana <bannss1@gmail.com>
- *
- * https://github.com/jsanahuja/Notifierjs
- *
- */
 (function(root, factory) {
     if (typeof define === "function" && define.amd) {
         define([], factory);

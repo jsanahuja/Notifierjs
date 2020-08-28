@@ -2,7 +2,7 @@
     "name": "@jsanahuja/notifierjs",
     "description": "Instagram Feed without access token. Not using the Instagram API",
     "homepage": "https://github.com/jsanahuja/Notifierjs",
-    "version": "1.2.3",
+    "version": "1.2.4",
     "keywords": [
         "notifier",
         "notification",
